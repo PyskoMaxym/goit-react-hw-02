@@ -1,0 +1,7 @@
+.listfeedback{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: black;
+    list-style: none;
+}
