@@ -21,16 +21,13 @@ function App() {
 
   useEffect(() =>{
     localStorage.setItem("feedback", JSON.stringify(feedback));
-
   },[feedback]);
 
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
   const positiveFeedback = Math.round((feedback.good / totalFeedback)*100);
 
-  useEffect(() =>{
-    localStorage.setItem("feedback", JSON.stringify(feedback));
-  }, [feedback]);
+  
 
   const handleReset = () => {
     const resetFeedback = ({good:0 , neutral: 0 , bad:0});
