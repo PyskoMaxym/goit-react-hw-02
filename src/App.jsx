@@ -3,7 +3,7 @@ import './App.css'
 import Description from './components/description/description';
 import Options from './components/options/options';
 import Feedback from './components/feedback/feedback';
-import Notifications from './components/notifications/notifications';
+import Notifications from './components/notifications/notification';
 
 function App() {
 
@@ -19,8 +19,14 @@ function App() {
     }));
   }
 
+  useEffect(() =>{
+    localStorage.setItem("feedback", JSON.stringify(feedback));
+
+  },[feedback]);
+
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedback = Math.round((feedback.good / totalFeedback)*100);
 
   useEffect(() =>{
     localStorage.setItem("feedback", JSON.stringify(feedback));
@@ -29,7 +35,6 @@ function App() {
   const handleReset = () => {
     const resetFeedback = ({good:0 , neutral: 0 , bad:0});
     setFeedback(resetFeedback);
-    localStorage.setItem("feedback", JSON.stringify(resetFeedback));
   };
 
   return (
@@ -38,7 +43,7 @@ function App() {
       <Options onUpdate={updateFeedback} totalFeedback={totalFeedback} onReset={handleReset} />
 
       {totalFeedback > 0 ? (
-        <Feedback feedback={feedback} totalFeedback={totalFeedback} /> 
+        <Feedback feedback={feedback} totalFeedback={totalFeedback} positiveFeedback={positiveFeedback} /> 
       ) : (
         <Notifications />
       )
