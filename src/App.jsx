@@ -3,7 +3,7 @@ import './App.css'
 import Description from './components/description/description';
 import Options from './components/options/options';
 import Feedback from './components/feedback/feedback';
-import Notifications from './components/notifications/notification';
+import Notifications from './components/notification/notification';
 
 function App() {
 
